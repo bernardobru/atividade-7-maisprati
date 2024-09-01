@@ -58,6 +58,27 @@ public class TaskManager {
         if (task != null) task.done = true;
     }
 
+    public Task getTask (int index) {
+
+        Node current = this.head;
+
+        if (current == null) throw new IllegalArgumentException("Task is null");
+
+        int count = 0;
+
+        while (current.next != null) {
+
+            if (count == index) return current.data;
+
+            count++;
+
+            current = current.next;
+        }
+
+        throw new IndexOutOfBoundsException("There is no " + count + " index");
+
+    }
+
     public void printTask (Task task) {
         if (task != null) {
             System.out.println(task.title);
