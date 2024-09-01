@@ -1,4 +1,4 @@
-package simply_linked_list;
+package task_manager;
 
 public class Task {
 

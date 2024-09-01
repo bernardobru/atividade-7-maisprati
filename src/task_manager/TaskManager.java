@@ -1,7 +1,4 @@
-package simply_linked_list;
-
-
-import java.util.Objects;
+package task_manager;
 
 public class TaskManager {
 
@@ -57,20 +54,18 @@ public class TaskManager {
         return current;
     }
 
-    public void completeTask (Task task, String done) {
-        if (task != null && Objects.equals(done, "yes") || Objects.equals(done, "Yes")) {
-            task.done = true;
-        }
-        else {
-            throw new IllegalArgumentException("Task is null");
-        }
+    public void completeTask (Task task) {
+        if (task != null) task.done = true;
     }
 
     public void printTask (Task task) {
-        System.out.println(task.title);
-        System.out.println(task.date);
-        String taskDone = task.done ? "Task is completed" : "Task is not completed";
-        System.out.println(taskDone);
+        if (task != null) {
+            System.out.println(task.title);
+            System.out.println(task.date);
+            String taskDone = task.done ? "Task is completed" : "Task is not completed";
+            System.out.println(taskDone);
+        }
+        else throw new IllegalArgumentException("Task is null");
     }
 
     private boolean isEmpty () {

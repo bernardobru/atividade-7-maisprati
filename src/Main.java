@@ -1,52 +1,62 @@
-import simply_linked_list.Node;
-import simply_linked_list.TaskManager;
-import simply_linked_list.Task;
+import task_manager.Node;
+import task_manager.TaskManager;
+import task_manager.Task;
 import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 
+        String continueAddingTask;
+
         Scanner sc = new Scanner(System.in);
 
-        TaskManager taskList = new TaskManager();
+        do {
 
-        System.out.println("Add a new task: ");
-        String taskTitle = sc.nextLine();
-        String taskDate = sc.nextLine();
+            TaskManager taskList = new TaskManager();
 
-        Task task = new Task(taskTitle, taskDate);
+            System.out.println("Add a new task: ");
+            String taskTitle = sc.nextLine();
+            String taskDate = sc.nextLine();
 
-        taskList.addTask(task);
-        taskList.printTask(task);
+            Task task = new Task(taskTitle, taskDate);
 
-        System.out.println("Want to complete the task? ");
-        String taskCompleted = sc.nextLine();
-        taskList.completeTask(task, taskCompleted);
-        System.out.println("Completed task: ");
-        taskList.printTask(task);
+            taskList.addTask(task);
+            taskList.printTask(task);
 
-        System.out.println();
+            System.out.println();
 
-        System.out.println("Want to remove the task? ");
-        String removeTask = sc.nextLine();
-        if (Objects.equals(removeTask, "yes") || Objects.equals(removeTask, "Yes")) {
-            Node removedTask = taskList.removeTask(0);
-            System.out.println(removedTask.getData().getTitle());
-            System.out.println(removedTask.getData().getDate());
-            String taskDone = removedTask.getData().isDone() ? "Task is completed" : "Task is not completed";
-            System.out.println(taskDone);
-        }
+            System.out.println("Want to complete the task? ");
+            String taskCompleted = sc.nextLine();
 
-        System.out.println("Add a new task: ");
-        String task2Title = sc.nextLine();
-        String task2Date = sc.nextLine();
+            System.out.println();
 
-        Task task2 = new Task(task2Title, task2Date);
+            if (Objects.equals(taskCompleted, "Yes")) {
+                taskList.completeTask(task);
+                System.out.println("Completed task: ");
+                taskList.printTask(task);
 
-        taskList.addTask(task2);
-        taskList.printTask(task2);
+                System.out.println();
 
+            } else System.out.println("Task not completed");
+
+            System.out.println();
+
+            System.out.println("Want to remove the task? ");
+            String removeTask = sc.nextLine();
+
+            System.out.println();
+
+            if (Objects.equals(removeTask, "yes") || Objects.equals(removeTask, "Yes")) {
+                System.out.println("Removed task: ");
+                Node removedTask = taskList.removeTask(0);
+                taskList.printTask(removedTask.getData());
+            }
+
+            System.out.println("Want to add a new task? ");
+            continueAddingTask = sc.nextLine();
+
+        } while (Objects.equals(continueAddingTask, "yes") || Objects.equals(continueAddingTask, "Yes"));
 
 
 //        System.out.println();
