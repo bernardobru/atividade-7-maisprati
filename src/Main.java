@@ -1,6 +1,6 @@
-import task_manager.Node;
-import task_manager.TaskManager;
-import task_manager.Task;
+import taskmanager.Node;
+import taskmanager.TaskManager;
+import taskmanager.Task;
 import java.util.Objects;
 import java.util.Scanner;
 

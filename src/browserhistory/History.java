@@ -4,9 +4,9 @@ public class History {
 
     private Node head;
 
-    private int size;
+    public final int size;
 
-    private int count;
+    public int count;
 
     public History (int size) {
         this.head = null;
@@ -17,7 +17,7 @@ public class History {
     public void add (String url) {
         Node newNode = new Node(url);
 
-        if (isFull()) {
+        if (this.count == this.size) {
             removeOldestURL();
         }
 
@@ -30,9 +30,8 @@ public class History {
                 current = current.next;
             }
 
-            current.next = newNode;
-
             this.count++;
+            current.next = newNode;
         }
     }
 
@@ -57,9 +56,22 @@ public class History {
             count++;
         }
 
-        previous.next = current.next;
+        if (previous != null) {
+            previous.next = current.next;
+        }
+
+        this.count--;
 
         return current;
+    }
+
+    public void print () {
+        Node current = this.head;
+
+        for (int i = this.count; i >= 0; i--) {
+            System.out.println(current.data);
+            current = current.next;
+        }
     }
 
     private boolean isEmpty () {
