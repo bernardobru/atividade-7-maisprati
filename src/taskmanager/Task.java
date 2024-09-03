@@ -15,14 +15,6 @@ public class Task {
         this.done = false;
     }
 
-    public String getTitle () {
-        return this.title;
-    }
-
-    public String getDate () {
-        return this.date;
-    }
-
     public boolean isDone () {
         return this.done;
     }

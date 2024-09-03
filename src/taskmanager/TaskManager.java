@@ -54,29 +54,19 @@ public class TaskManager {
         return current;
     }
 
-    public void completeTask (Task task) {
-        if (task != null) task.done = true;
-    }
-
-    public Task getTask (int index) {
-
+    public Node completeTask (int index) {
         Node current = this.head;
-
-        if (current == null) throw new IllegalArgumentException("Tarefa não pode ser null");
 
         int count = 0;
 
-        while (current.next != null) {
-
-            if (count == index) return current.data;
-
-            count++;
-
+        while (current.next != null && count < index) {
             current = current.next;
         }
 
-        throw new IndexOutOfBoundsException("Não tem índice " + count);
-
+        if (current.getData() != null){
+            current.getData().done = true;
+        }
+        return current;
     }
 
     public void printTask (Task task) {

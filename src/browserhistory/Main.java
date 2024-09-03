@@ -31,6 +31,7 @@ public class Main {
 
             System.out.println("Qual URL você deseja remover? ");
             int index = sc.nextInt();
+            sc.nextLine();
 
             Node removedURL = browserHistory.remove(index);
 
