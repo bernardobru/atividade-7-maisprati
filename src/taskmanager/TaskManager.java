@@ -27,7 +27,7 @@ public class TaskManager {
     public Node removeTask (int index) {
         Node current = this.head;
 
-        if (isEmpty()) throw new IndexOutOfBoundsException("There is no task in the list");
+        if (isEmpty()) throw new IndexOutOfBoundsException("Não há tarefas!");
 
         if (index == 0) {
             Node removedTask = this.head;
@@ -62,7 +62,7 @@ public class TaskManager {
 
         Node current = this.head;
 
-        if (current == null) throw new IllegalArgumentException("Task is null");
+        if (current == null) throw new IllegalArgumentException("Tarefa não pode ser null");
 
         int count = 0;
 
@@ -75,18 +75,18 @@ public class TaskManager {
             current = current.next;
         }
 
-        throw new IndexOutOfBoundsException("There is no " + count + " index");
+        throw new IndexOutOfBoundsException("Não tem índice " + count);
 
     }
 
     public void printTask (Task task) {
         if (task != null) {
-            System.out.println(task.title);
-            System.out.println(task.date);
-            String taskDone = task.done ? "Task is completed" : "Task is not completed";
+            System.out.println("Tarefa: " + task.title);
+            System.out.println("Data: " + task.date);
+            String taskDone = task.done ? "Concluída" : "Não concluída";
             System.out.println(taskDone);
         }
-        else throw new IllegalArgumentException("Task is null");
+        else throw new IllegalArgumentException("Tarefa não pode ser null");
     }
 
     private boolean isEmpty () {

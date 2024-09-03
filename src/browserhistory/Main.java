@@ -1,49 +1,71 @@
 package browserhistory;
 
+import java.util.Objects;
+import java.util.Scanner;
+
 public class Main {
     public static void main (String[] args) {
 
         History browserHistory = new History(5);
 
-        String firstURL = "https://github.com";
+        Scanner sc = new Scanner(System.in);
 
-        String secondURL = "http://joaozinhogameplay.net";
+        System.out.println("Adicionar URLs no histórico");
+        for (int i = 0; i < 5; i++) {
+            System.out.println("Adicionar " + (i + 1) + "ª URL: ");
+            String url = sc.nextLine();
+            browserHistory.add(url);
+        }
 
-        String thirdURL = "http://www.baixefilmesgratisnaoevirus.com.br";
+        System.out.println();
 
-        String fourthURL = "https://www.netflix.com";
-
-        String fifthURL = "https://www.gov.br";
-
-        browserHistory.add(firstURL);
-        browserHistory.add(secondURL);
-        browserHistory.add(thirdURL);
-        browserHistory.add(fourthURL);
-        browserHistory.add(fifthURL);
-
+        System.out.println("Histórico: ");
         browserHistory.print();
 
         System.out.println();
 
-        Node removedURL = browserHistory.remove(3);
-        System.out.println("Removed url: " + removedURL.data);
+        System.out.println("Quer remover alguma URL? ");
+        String removeURL = sc.nextLine();
+
+        if (Objects.equals(removeURL, "sim") || Objects.equals(removeURL, "Sim")) {
+
+            System.out.println("Qual URL você deseja remover? ");
+            int index = sc.nextInt();
+
+            Node removedURL = browserHistory.remove(index);
+
+            System.out.println();
+
+            System.out.println("URL removida: ");
+            System.out.println(removedURL.data);
+
+            System.out.println();
+
+            System.out.println("Histórico sem a URL removida: ");
+            browserHistory.print();
+        } else {
+            System.out.println("Nada a ser removido");
+        }
 
         System.out.println();
 
-        System.out.println("History without the fourth url");
+        System.out.println("Quer adicionar URLs? ");
+        String continueAdding = sc.nextLine();
 
-        browserHistory.print();
+        while (Objects.equals(continueAdding, "sim") || Objects.equals(continueAdding, "Sim")) {
+            System.out.println("Adicionar nova URL: ");
+            String url = sc.nextLine();
+            browserHistory.add(url);
 
-        browserHistory.add(fourthURL);
-        browserHistory.add("https://www.w3c.org");
+            System.out.println();
+
+            System.out.println("Quer adicionar URLs? ");
+            continueAdding = sc.nextLine();
+        }
 
         System.out.println();
 
-        System.out.println("Browser history overloaded");
-        System.out.println("size " + browserHistory.size);
-        System.out.println("count " + browserHistory.count);
+        System.out.println("Histórico depois de adicionar mais que cinco URLs: ");
         browserHistory.print();
-
-
     }
 }

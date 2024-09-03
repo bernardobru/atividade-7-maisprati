@@ -4,9 +4,9 @@ public class History {
 
     private Node head;
 
-    public final int size;
+    private final int size;
 
-    public int count;
+    private int count;
 
     public History (int size) {
         this.head = null;
@@ -17,12 +17,13 @@ public class History {
     public void add (String url) {
         Node newNode = new Node(url);
 
-        if (this.count == this.size) {
-            removeOldestURL();
+        if (this.isFull()) {
+            this.removeOldestURL();
         }
 
         if (this.head == null) {
             this.head = newNode;
+            this.count++;
         } else {
             Node current = this.head;
 
@@ -31,6 +32,7 @@ public class History {
             }
 
             this.count++;
+
             current.next = newNode;
         }
     }
@@ -42,7 +44,7 @@ public class History {
         if (isEmpty()) throw new IndexOutOfBoundsException("The history is empty");
 
         if (index == 0) {
-            this.head.next = this.head;
+            this.head = this.head.next;
             return current;
         }
 
@@ -68,9 +70,11 @@ public class History {
     public void print () {
         Node current = this.head;
 
-        for (int i = this.count; i >= 0; i--) {
-            System.out.println(current.data);
-            current = current.next;
+        for (int i = 0; i <= this.count; i++) {
+            if (current != null) {
+                System.out.println((i + 1) + "ª URL: " + current.data);
+                current = current.next;
+            }
         }
     }
 
