@@ -16,7 +16,7 @@ São 8 questões sobre estrutura de dados para serem resolvidas em Java
 
 ### Lista Duplamente Encadeada
 
-4. Implemente um editor de texto simples onde as operações de desfazer (undo) e refazer (redo) são gerenciadas por uma lista duplamente encadeada.
+4. Implemente um editor de texto simples onde as operações de desfazer (undo) e refazer (undo) são gerenciadas por uma lista duplamente encadeada.
 
 5. Implemente um jogo simples de cartas onde a mão do jogador é representada por uma lista duplamente encadeada. Permita que o jogador adicione, remova, e reorganize as cartas na mão.
 
