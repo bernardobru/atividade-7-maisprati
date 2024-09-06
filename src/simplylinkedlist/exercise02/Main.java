@@ -1,4 +1,4 @@
-package browserhistory;
+package simplylinkedlist.exercise02;
 
 import java.util.Objects;
 import java.util.Scanner;

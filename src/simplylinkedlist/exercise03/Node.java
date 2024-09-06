@@ -1,4 +1,4 @@
-package undo;
+package simplylinkedlist.exercise03;
 
 public class Node {
 

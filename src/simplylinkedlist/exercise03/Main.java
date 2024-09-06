@@ -1,11 +1,11 @@
-package undo;
+package simplylinkedlist.exercise03;
 
 import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        ReversionController undoFunction = new ReversionController();
+        ActionManager undoFunction = new ActionManager();
 
         Scanner sc = new Scanner(System.in);
 

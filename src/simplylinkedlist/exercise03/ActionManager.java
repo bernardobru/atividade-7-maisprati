@@ -1,10 +1,10 @@
-package undo;
+package simplylinkedlist.exercise03;
 
-public class ReversionController {
+public class ActionManager {
 
     private Node head;
 
-    public ReversionController () {
+    public ActionManager() {
         this.head = null;
     }
 
@@ -12,7 +12,11 @@ public class ReversionController {
         if (this.isEmpty()) return null;
 
         Node head = this.head;
+
         this.head = this.head.next;
+
+        this.head.next = null;
+
         return head;
     }
 

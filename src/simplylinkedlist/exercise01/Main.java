@@ -1,4 +1,4 @@
-package taskmanager;
+package simplylinkedlist.exercise01;
 
 import java.util.Objects;
 import java.util.Scanner;

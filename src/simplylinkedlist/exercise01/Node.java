@@ -1,4 +1,4 @@
-package taskmanager;
+package simplylinkedlist.exercise01;
 
 public class Node {
 

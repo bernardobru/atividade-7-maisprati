@@ -1,4 +1,4 @@
-package undoredo;
+package doublelinkedlist.exercise04;
 
 public class Node {
 
@@ -13,4 +13,9 @@ public class Node {
         this.next = null;
         this.previous = null;
     }
+
+    public static String getData(Node node) {
+        return node.data;
+    }
+
 }

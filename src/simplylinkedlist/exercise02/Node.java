@@ -1,4 +1,4 @@
-package browserhistory;
+package simplylinkedlist.exercise02;
 
 public class Node {
 
