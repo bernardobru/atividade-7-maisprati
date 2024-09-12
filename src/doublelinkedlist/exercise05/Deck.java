@@ -98,18 +98,26 @@ public class Deck {
     }
 
     public void arrange() {
+        if (isEmpty()) {
+            throw new NullPointerException("A mão está vazia!");
+        }
+
         Node current = this.head;
 
         Node index = current.next;
 
+        Card temp;
+
         while (current.next != null) {
             if (current.data.id > index.data.id) {
+                temp = current.data;
+
                 current.data = index.data;
 
-                current = current.next;
+                index.data = temp;
 
-                index = index.next;
             }
+
             current = current.next;
 
             index = index.next;
