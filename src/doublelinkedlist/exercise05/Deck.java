@@ -48,53 +48,50 @@ public class Deck {
         this.tail.previous.next = this.tail;
     }
 
-    public Node remove(int index) {
+    public Node discard(int index) {
         Node current;
 
-        try {
-            if (index == 0) {
-                this.head = this.head.next;
-            }
-
-            if (index == this.size - 1) {
-                this.tail = this.tail.previous;
-
-                Node removed = this.tail.next;
-
-                this.tail.next = null;
-
-                return removed;
-            }
-
-            current = this.head;
-
-            int count = 0;
-
-            while (current.next != null && count < index) {
-                current = current.next;
-
-                count++;
-            }
-
-            Node next = current.next;
-
-            Node previous = current.previous;
-
-            previous.next = next;
-
-            if (next != null) {
-                next.previous = previous;
-            }
-
-            this.size--;
-
-            return current;
-
-        } catch (IndexOutOfBoundsException e) {
-            e.printStackTrace();
+        if (index < 0) {
+            throw new IndexOutOfBoundsException("Não pode existir índice negativo!");
         }
 
-        return null;
+        if (index == 0) {
+            this.head = this.head.next;
+        }
+
+        if (index == this.size - 1) {
+            this.tail = this.tail.previous;
+
+            Node removed = this.tail.next;
+
+            this.tail.next = null;
+
+            return removed;
+        }
+
+        current = this.head;
+
+        int count = 0;
+
+        while (current.next != null && count < index) {
+            current = current.next;
+
+            count++;
+        }
+
+        Node next = current.next;
+
+        Node previous = current.previous;
+
+        previous.next = next;
+
+        if (next != null) {
+            next.previous = previous;
+        }
+
+        this.size--;
+
+        return current;
     }
 
     public void arrange() {
@@ -102,29 +99,35 @@ public class Deck {
             throw new NullPointerException("A mão está vazia!");
         }
 
-        Node current = this.head;
+        boolean isArranged = false;
 
-        Node index = current.next;
+        Node current, next;
 
-        Card temp;
+        while (!isArranged) {
+            isArranged = true;
 
-        while (current.next != null) {
-            if (current.data.id > index.data.id) {
-                temp = current.data;
+            current = this.head;
 
-                current.data = index.data;
+            next = this.head.next;
 
-                index.data = temp;
+            while (current.next != null) {
+                if (current.data.id > next.data.id) {
+                    Card temp = current.data;
 
+                    current.data = next.data;
+
+                    next.data = temp;
+
+                    isArranged = false;
+                }
+                current = current.next;
+
+                next = next.next;
             }
-
-            current = current.next;
-
-            index = index.next;
         }
     }
 
-    public void print() {
+    public void show() {
         Node current = this.head;
 
         int count = 0;
