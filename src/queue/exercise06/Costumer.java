@@ -19,7 +19,7 @@ public class Costumer {
 
     @Override
     public String toString() {
-        return "Nome: " + this.name + "\n"
-                + "Demanda: " + this.demand + "\n";
+        return "Nome: " + this.name + "\n" +
+               "Demanda: " + this.demand + "\n";
     }
 }

@@ -89,7 +89,7 @@ public class BankQueue {
 
     public Costumer peek() {
         if (this.front == null) {
-            throw new NoSuchElementException("A fila do banco está vazia!");
+            return null;
         }
 
         return this.front;

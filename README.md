@@ -2,7 +2,8 @@
 
 ## Sobre
 
-São 8 questões sobre estrutura de dados para serem resolvidas em Java
+São 8 questões sobre algumas estruturas de dados (lista simplesmente encadeada, lista duplamente encadeada e filas) 
+que devem ser resolvidas em Java.
 
 ## Questões
 

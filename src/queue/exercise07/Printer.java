@@ -15,9 +15,9 @@ public class Printer {
         this.size = 0;
     }
 
-    public void enqueue(int pages, String content, String author) {
+    public void enqueue(String name, String content) {
         ++size;
-        Document document = new Document(pages, content, author);
+        Document document = new Document(name, content);
 
         if (isEmpty()) {
             this.front = this.rear = document;
@@ -47,7 +47,8 @@ public class Printer {
 
     public void print() {
         if (isEmpty()) {
-            throw new NoSuchElementException("Não tem mais documentos a imprimir!");
+            System.out.println("Não tem mais documentos a imprimir!");
+            return;
         }
 
         if (this.front == this.rear) {
@@ -57,7 +58,7 @@ public class Printer {
 
             size--;
 
-            System.out.println(printed.content);
+            System.out.println(printed);
 
             return;
         }
@@ -73,7 +74,7 @@ public class Printer {
 
             size--;
 
-            System.out.println(printed.content);
+            System.out.println(printed);
 
             return;
         }
@@ -86,24 +87,16 @@ public class Printer {
 
         size--;
 
-        System.out.println(printed.content);
+        System.out.println(printed);
     }
 
     public Document peek() {
         if (this.front == null) {
-            throw new NoSuchElementException("Não há mais documentos a imprimir!");
+            System.out.println("Não há mais documentos a imprimir!");
+            return null;
         }
 
         return this.front;
-    }
-
-    public void show() {
-        Document current = this.front;
-
-        for (int count = 0; count < this.size; count++) {
-            System.out.println(current);
-            current = current.next;
-        }
     }
 
     private boolean isEmpty() {

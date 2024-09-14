@@ -1,26 +1,24 @@
 package queue.exercise07;
 
 public class Document {
-    protected int pages;
+    protected String name;
 
     protected String content;
-
-    protected String author;
 
     protected Document previous;
 
     protected Document next;
 
-    public Document(int pages, String content, String author) {
-        this.pages = pages;
+    public Document(String name, String content) {
+        this.name = name;
         this.content = content;
-        this.author = author;
         this.previous = null;
         this.next = null;
     }
 
     @Override
     public String toString() {
-        return "";
+        return "Nome do arquivo: " + this.name + "\n" +
+               "Conteúdo: " + this.content + "\n";
     }
 }

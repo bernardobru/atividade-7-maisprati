@@ -1,17 +1,36 @@
 package queue.exercise07;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
+    private static final String YES = "sim";
+
     public static void main(String[] args) {
         Printer printer = new Printer();
-
         Scanner sc = new Scanner(System.in);
+        String adding, name, content;
 
-        printer.enqueue(5, "lorem ipsum dolor sit amet", "fulano ipsum da silva");
-        printer.enqueue(3, "rhgwegrh eghdn sg nteh ae e", "qwerty asgwaer");
+        System.out.println("Adicionando documentos para imprimir");
+        do {
+            System.out.println("Nome do arquivo: ");
+            name = sc.nextLine();
+            System.out.println("Conteudo: ");
+            content = sc.nextLine();
 
-        printer.print();
-        printer.print();
+            printer.enqueue(name, content);
+
+            System.out.println("Adicionar mais documentos? ");
+            adding = sc.nextLine();
+
+            System.out.println();
+        } while (Objects.equals(adding, YES));
+
+        System.out.println();
+
+        System.out.println("Imprimindo documentos");
+        do {
+            printer.print();
+        } while(printer.peek() != null);
     }
 }
